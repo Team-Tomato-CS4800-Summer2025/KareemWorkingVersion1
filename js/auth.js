@@ -1,10 +1,14 @@
-import { auth } from './firebase-config.js';
+// /js/auth.js
+import { auth } from "./firebase-config.js";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  updateProfile,
+  onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-// Register
+// — REGISTER —
 const regBtn = document.getElementById("registerBtn");
 if (regBtn) {
   regBtn.addEventListener("click", () => {
@@ -13,45 +17,71 @@ if (regBtn) {
     const errorBox = document.getElementById("error-message");
 
     createUserWithEmailAndPassword(auth, email, pass)
-      .then(() => {
-        alert("Registered successfully!");
-        window.location.href = "login.html";
+      .then((userCred) => {
+        // assign default username & avatar
+        return updateProfile(userCred.user, {
+          displayName: email.split("@")[0],
+          photoURL: "Images/default-profile-pic.jpg",
+        });
       })
-      .catch((error) => {
-        if (error.code === "auth/email-already-in-use") {
+      .then(() => (window.location.href = "login.html"))
+      .catch((err) => {
+        if (err.code === "auth/email-already-in-use") {
           errorBox.textContent = "Email already registered.";
-        } else if (error.code === "auth/invalid-email") {
+        } else if (err.code === "auth/invalid-email") {
           errorBox.textContent = "Please enter a valid email.";
-        } else if (error.code === "auth/weak-password") {
+        } else if (err.code === "auth/weak-password") {
           errorBox.textContent = "Password should be at least 6 characters.";
         } else {
-          errorBox.textContent = error.message;
+          errorBox.textContent = err.message;
         }
       });
   });
 }
 
-
-// Login
+// — LOGIN —
 const loginBtn = document.getElementById("loginBtn");
 if (loginBtn) {
   loginBtn.addEventListener("click", () => {
     const email = document.getElementById("email").value;
     const pass = document.getElementById("password").value;
+    const errorBox = document.getElementById("error-message");
+
     signInWithEmailAndPassword(auth, email, pass)
-      .then(() => {
-        //alert("Login successful!");
-        window.location.href = "index.html"; // Redirect to home
-      })
-      .catch((error) => {
-      const errorMessage = document.getElementById("error-message");
-      if (error.code === "auth/wrong-password") {
-        errorMessage.textContent = "Wrong password. Please try again.";
-      } else if (error.code === "auth/user-not-found") {
-      errorMessage.textContent = "User not found. Please check your email.";
-      } else {
-        errorMessage.textContent = "Login failed, wrong password :(";
-      }
+      .then(() => (window.location.href = "index.html"))
+      .catch((err) => {
+        if (err.code === "auth/user-not-found") {
+          errorBox.textContent = "No account with that email.";
+        } else if (err.code === "auth/wrong-password") {
+          errorBox.textContent = "Incorrect password.";
+        } else {
+          errorBox.textContent = err.message;
+        }
+      });
+  });
+}
+
+// — HEADER SWAP & LOGOUT —
+onAuthStateChanged(auth, (user) => {
+  const authButtons = document.getElementById("authButtons");
+  const profileContainer = document.getElementById("profileContainer");
+  const profileImg = document.getElementById("profileImage");
+  const profileName = document.getElementById("profileName");
+
+  if (user) {
+    authButtons.classList.add("d-none");
+    profileContainer.classList.remove("d-none");
+    profileImg.src = user.photoURL || "Images/default-profile-pic.jpg";
+    profileName.textContent = user.displayName || user.email;
+  } else {
+    authButtons.classList.remove("d-none");
+    profileContainer.classList.add("d-none");
+  }
 });
+
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => (window.location.href = "login.html"));
   });
 }

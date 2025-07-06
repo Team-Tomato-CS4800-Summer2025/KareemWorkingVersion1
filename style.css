@@ -402,6 +402,25 @@ body {
   transition: filter 0.2s ease;
 }
 
+#profileEditImage {
+  border: 2px solid #008080;
+  padding: 4px;
+  background: #fff;
+}
+
+.username-input,
+.profilepic-input {
+  font-family: "Alegreya", serif;
+  color: #004d40;
+  font-size: 17px;
+  text-align: center !important;
+}
+
+#profileName,
+#profileDropdown {
+  color: #20b2aa !important; /* replace with whatever hex you like */
+}
+
 /* Colors:
   #008080
   #20B2AA

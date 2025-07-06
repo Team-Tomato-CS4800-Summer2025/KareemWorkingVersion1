@@ -48,9 +48,7 @@
           <li>
             <a href="index.html" class="nav-link px-2 link-secondary">Home</a>
           </li>
-          <li>
-            <a href="marketplace.html" class="nav-link px-2">Buy/Trade/Sell</a>
-          </li>
+          <li><a href="#" class="nav-link px-2">Buy/Trade/Sell</a></li>
           <li>
             <a href="wishlist.html" class="nav-link px-2 link-secondary">
               Wishlist
@@ -108,71 +106,13 @@
     </div>
     <!-- Hero -->
     <div class="px-4 text-center hero-home-container">
-      <h1 class="display-5 fw-bold text-body-emphasis">Wishlist</h1>
+      <h1 class="display-5 fw-bold text-body-emphasis">Buy/Trade/Sell</h1>
       <div class="col-lg-6 mx-auto">
         <p class="lead mb-4 hero-home-container-description">
-          A curated list of fragrances you’re dreaming of.
+          Buy, sell, and trade fragrances in this section.
         </p>
       </div>
     </div>
-
-    <!-- All Fragrances Gallery -->
-    <section class="container py-5">
-      <div
-        id="wishlistGrid"
-        class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
-      >
-        <!-- JS will inject cards here -->
-      </div>
-    </section>
-
-    <!-- card template: hidden until JS clones it -->
-    <template id="frag-card-template">
-      <div class="col">
-        <div class="card frag-card shadow-sm h-100 rounded-3 overflow-hidden">
-          <div class="position-relative">
-            <div class="ratio ratio-1x1 bg-white overflow-hidden">
-              <img
-                src=""
-                class="frag-image w-100 h-100 object-fit-contain"
-                alt=""
-              />
-            </div>
-            <button
-              class="btn btn-light rounded-circle fav-btn position-absolute top-0 end-0 m-2"
-            >
-              <img src="Icons/heart.svg" alt="favorite" />
-            </button>
-          </div>
-          <div class="card-body d-flex flex-column frag-card-body">
-            <div
-              class="frag-scent-multi overflow-hidden d-inline-flex rounded-pill mb-2"
-            ></div>
-            <div
-              class="frag-season-multi overflow-hidden d-inline-flex rounded-pill mb-2"
-            ></div>
-
-            <h5 class="frag-name mb-1"></h5>
-            <p class="frag-brand text-muted mb-4"></p>
-
-            <div class="mt-auto d-flex align-items-center">
-              <img
-                src="Icons/star-fill.svg"
-                class="star-icon me-1"
-                alt="star"
-              />
-              <small>
-                <span class="frag-rating"></span>
-                <span class="frag-votes"></span>
-              </small>
-              <a href="" class="btn btn-sm btn-frag-view ms-auto" data-slug="">
-                View
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
 
     <script
       src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
