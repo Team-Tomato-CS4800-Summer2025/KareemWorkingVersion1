@@ -12,6 +12,16 @@ body {
   -webkit-backdrop-filter: blur(7.1px);
 }
 
+.header-home-container .nav-link:hover,
+.header-home-container .nav-link:focus {
+  font-family: "Alegreya", serif;
+  background: rgba(224, 255, 255, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.1px);
+  -webkit-backdrop-filter: blur(7.1px);
+}
+
 /* Perfume SVG Icon */
 .perfume-icon {
   width: 40px;
@@ -80,7 +90,7 @@ body {
 .frag-title {
   color: #008080;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.25rem;
 }
 .frag-subtitle {
@@ -359,6 +369,37 @@ body {
 
 .votes {
   color: #20b2aa !important;
+}
+
+#wishlist-count {
+  /* make it a square flex container */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* fix its dimensions—tweak as needed */
+  width: 1.5rem;
+  height: 1.5rem;
+
+  /* remove default padding so width/height reign */
+  padding: 0;
+
+  /* a slightly rounded corner */
+  border-radius: 0.5rem;
+
+  /* your existing colors */
+  background-color: #20b2aa !important;
+  color: #fff !important;
+
+  /* optional: bump the font-size if it looks too small */
+  font-size: 0.875rem;
+}
+
+/* normal (non-favorited) heart */
+.fav-btn img {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(35%) saturate(7258%)
+    hue-rotate(127deg) brightness(87%) contrast(75%);
+  transition: filter 0.2s ease;
 }
 
 /* Colors:
