@@ -56,6 +56,7 @@ body {
   background-color: #008080 !important;
   color: #fff !important;
 }
+/* NavBar Settings */
 
 /* Hero Settings */
 .hero-home-container {
@@ -80,6 +81,7 @@ body {
   text-shadow: -2px -2px 2px rgba(224, 255, 255, 0.1),
     2px 2px 4px rgba(0, 0, 0, 0.45) !important;
 }
+/* Hero Settings */
 
 /* Fragrance Body (Under Image) */
 .frag-card-body {
@@ -371,7 +373,9 @@ body {
   color: #20b2aa !important;
 }
 
-#wishlist-count {
+#wishlist-count,
+#cart-count,
+#swap-count {
   /* make it a square flex container */
   display: inline-flex;
   align-items: center;

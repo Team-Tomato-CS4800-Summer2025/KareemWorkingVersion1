@@ -1,4 +1,3 @@
-// /js/auth.js
 import { auth } from "./firebase-config.js";
 import {
   createUserWithEmailAndPassword,
@@ -8,7 +7,7 @@ import {
   signOut,
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-// — REGISTER —
+// Register
 const regBtn = document.getElementById("registerBtn");
 if (regBtn) {
   regBtn.addEventListener("click", () => {
@@ -39,7 +38,7 @@ if (regBtn) {
   });
 }
 
-// — LOGIN —
+// Login
 const loginBtn = document.getElementById("loginBtn");
 if (loginBtn) {
   loginBtn.addEventListener("click", () => {
@@ -61,7 +60,7 @@ if (loginBtn) {
   });
 }
 
-// — HEADER SWAP & LOGOUT —
+// Header Swap & Logout
 onAuthStateChanged(auth, (user) => {
   const authButtons = document.getElementById("authButtons");
   const profileContainer = document.getElementById("profileContainer");
