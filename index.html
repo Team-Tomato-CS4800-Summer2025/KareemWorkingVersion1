@@ -303,7 +303,15 @@
           </div>
           <div class="modal-body"></div>
           <div class="modal-footer">
-            <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
+            <button
+              id="checkoutBtn"
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#checkoutModal"
+            >
+            Checkout
+            </button>
           </div>
         </div>
       </div>
@@ -337,6 +345,118 @@
       </div>
     </div>
 
+    <!-- Checkout Modal -->
+    <div
+      class="modal fade"
+      id="checkoutModal"
+      tabindex="-1"
+      aria-labelledby="checkoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form id="checkoutForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <!-- User Info -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="address" class="form-label">Shipping Address</label>
+                <textarea class="form-control" id="address" rows="2" required></textarea>
+              </div>
+
+              <!-- Credit Card Info -->
+              <h6 class="mt-4">Payment Information</h6>
+
+              <div class="mb-3">
+                <label for="cardName" class="form-label">Name on Card</label>
+                <input type="text" class="form-control" id="cardName" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardNumber"
+                  pattern="\d{16}"
+                  maxlength="16"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="expDate" class="form-label">Expiration Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="expDate"
+                    placeholder="MM/YY"
+                    pattern="\d{2}/\d{2}"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cvv" class="form-label">CVV</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cvv"
+                    maxlength="4"
+                    pattern="\d{3,4}"
+                    placeholder="123"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Place Order</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="orderConfirmationModal"
+      tabindex="-1"
+      aria-labelledby="orderConfirmationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderConfirmationModalLabel">Order Confirmed</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            Thank you for your order! We'll send a confirmation email shortly.
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
       defer
@@ -349,5 +469,6 @@
     ></script>
     <script type="module" src="js/profile.js" defer></script>
     <script type="module" src="js/auth.js" defer></script>
+    <script type="module" src="js/checkout.js" defer></script>
   </body>
 </html>
