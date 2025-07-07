@@ -269,7 +269,13 @@
           </div>
           <div class="modal-body"></div>
           <div class="modal-footer">
-            <button id="checkoutBtn" type="button" class="btn btn-primary">
+            <button
+              id="checkoutBtn"
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#checkoutModal"
+            >
               Checkout
             </button>
           </div>
@@ -298,7 +304,7 @@
           </div>
           <div class="modal-body"></div>
           <div class="modal-footer">
-            <button id="proposeSwapBtn" type="button" class="btn btn-warning">
+            <button id="proposeSwapBtn" class="btn btn-warning">
               Propose Swap
             </button>
           </div>
@@ -567,7 +573,246 @@
       });
     </script>
 
+        <!-- Checkout Modal -->
+    <div
+      class="modal fade"
+      id="checkoutModal"
+      tabindex="-1"
+      aria-labelledby="checkoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form id="checkoutForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <!-- User Info -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="address" class="form-label">Shipping Address</label>
+                <textarea class="form-control" id="address" rows="2" required></textarea>
+              </div>
+
+              <!-- Credit Card Info -->
+              <h6 class="mt-4">Payment Information</h6>
+
+              <div class="mb-3">
+                <label for="cardName" class="form-label">Name on Card</label>
+                <input type="text" class="form-control" id="cardName" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardNumber"
+                  pattern="\d{16}"
+                  maxlength="16"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="expDate" class="form-label">Expiration Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="expDate"
+                    placeholder="MM/YY"
+                    pattern="\d{2}/\d{2}"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cvv" class="form-label">CVV</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cvv"
+                    maxlength="4"
+                    pattern="\d{3,4}"
+                    placeholder="123"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Place Order</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="orderConfirmationModal"
+      tabindex="-1"
+      aria-labelledby="orderConfirmationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderConfirmationModalLabel">Order Confirmed</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            Thank you for your order! We'll send a confirmation email shortly.
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swap Modal -->
+    <div
+      class="modal fade"
+      id="swapModal"
+      tabindex="-1"
+      aria-labelledby="swapModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="swapModalLabel">Your Swap List</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button id="proposeSwapBtn" class="btn btn-warning">
+              Propose Swap
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Swap Email Modal -->
+    <div
+      class="modal fade"
+      id="swapEmailModal"
+      tabindex="-1"
+      aria-labelledby="swapEmailModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="swapEmailForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="swapEmailModalLabel">Enter Your Email</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="swapEmailInput" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="swapEmailInput"
+                  required
+                  placeholder="you@example.com"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Send to Seller</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Make sure this runs after DOM content loads
+      document.addEventListener("DOMContentLoaded", () => {
+        // Keys for localStorage
+        const SWAP_KEY = "swapItems";
+
+        // Load swaps from localStorage or empty array
+        let swaps = JSON.parse(localStorage.getItem(SWAP_KEY)) || [];
+
+        // Bootstrap modal instance for the email modal
+        const swapEmailModalEl = document.getElementById("swapEmailModal");
+        const swapEmailModal = new bootstrap.Modal(swapEmailModalEl);
+
+        // Button that triggers swap proposal
+        const proposeSwapBtn = document.getElementById("proposeSwapBtn");
+
+        // Swap email form element
+        const swapEmailForm = document.getElementById("swapEmailForm");
+
+        // When user clicks the "Propose Swap" button
+        proposeSwapBtn.addEventListener("click", () => {
+          // Show the email entry modal
+          swapEmailModal.show();
+        });
+
+        // Handle email form submission
+        swapEmailForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const emailInput = document.getElementById("swapEmailInput");
+          if (!emailInput.checkValidity()) {
+            emailInput.reportValidity();
+            return;
+          }
+
+          const email = emailInput.value.trim();
+
+          // Show confirmation alert
+          alert("Your email has been sent to the seller. They will reach out to you.");
+
+          // Clear swaps after request sent
+          swaps = [];
+          localStorage.setItem(SWAP_KEY, JSON.stringify(swaps));
+
+          // Optionally update UI swap count badge here
+          const swapCountBadge = document.getElementById("swap-count");
+          if (swapCountBadge) swapCountBadge.textContent = swaps.length;
+
+          // Close the email modal
+          swapEmailModal.hide();
+
+          // Reset the form for next time
+          swapEmailForm.reset();
+        });
+      });
+    </script>
+
     <script type="module" src="js/profile.js" defer></script>
     <script type="module" src="js/auth.js" defer></script>
+    <script src="js/checkout.js" defer></script>
+
   </body>
 </html>
