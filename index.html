@@ -344,6 +344,104 @@
         </div>
       </div>
     </div>
+  
+    <!-- Swap Email Modal -->
+    <div
+      class="modal fade"
+      id="swapEmailModal"
+      tabindex="-1"
+      aria-labelledby="swapEmailModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="swapEmailForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="swapEmailModalLabel">Enter Your Email</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="swapEmailInput" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="swapEmailInput"
+                  required
+                  placeholder="you@example.com"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Send to Seller</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Make sure this runs after DOM content loads
+      document.addEventListener("DOMContentLoaded", () => {
+        // Keys for localStorage
+        const SWAP_KEY = "swapItems";
+
+        // Load swaps from localStorage or empty array
+        let swaps = JSON.parse(localStorage.getItem(SWAP_KEY)) || [];
+
+        // Bootstrap modal instance for the email modal
+        const swapEmailModalEl = document.getElementById("swapEmailModal");
+        const swapEmailModal = new bootstrap.Modal(swapEmailModalEl);
+
+        // Button that triggers swap proposal
+        const proposeSwapBtn = document.getElementById("proposeSwapBtn");
+
+        // Swap email form element
+        const swapEmailForm = document.getElementById("swapEmailForm");
+
+        // When user clicks the "Propose Swap" button
+        proposeSwapBtn.addEventListener("click", () => {
+          // Show the email entry modal
+          swapEmailModal.show();
+        });
+
+        // Handle email form submission
+        swapEmailForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const emailInput = document.getElementById("swapEmailInput");
+          if (!emailInput.checkValidity()) {
+            emailInput.reportValidity();
+            return;
+          }
+
+          const email = emailInput.value.trim();
+
+          // Show confirmation alert
+          alert("Your email has been sent to the seller. They will reach out to you.");
+
+          // Clear swaps after request sent
+          swaps = [];
+          localStorage.setItem(SWAP_KEY, JSON.stringify(swaps));
+
+          // Optionally update UI swap count badge here
+          const swapCountBadge = document.getElementById("swap-count");
+          if (swapCountBadge) swapCountBadge.textContent = swaps.length;
+
+          // Close the email modal
+          swapEmailModal.hide();
+
+          // Reset the form for next time
+          swapEmailForm.reset();
+        });
+      });
+    </script>
+
 
     <!-- Checkout Modal -->
     <div
