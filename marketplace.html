@@ -558,7 +558,7 @@
           populateModal(cart, "cartModal");
         };
         document.getElementById("proposeSwapBtn").onclick = () => {
-          alert("Swap proposal sent!");
+          alert("Your swap request has been sent. The seller will reach out to you.");
           swaps = [];
           save(SWAP_KEY, swaps);
           updateBadge("swap-count", swaps);
