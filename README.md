@@ -1,3 +1,8 @@
 # KareemWorkingVersion1
 
-## These three programs MUST not be included inside a file. This is why they were uploaded first: (index.html, perfume.html, style.css)
+## Fragrance Marketplace (Buy/Sell/Trade) (In development)
+### Completed Features
+-Fragrance Display
+-Fragrance Card
+-Partial Profile System
+-Partial Checkout System
