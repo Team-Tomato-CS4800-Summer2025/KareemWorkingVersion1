@@ -1,7 +1,7 @@
 # KareemWorkingVersion1
 
 ## Fragrance Marketplace (Buy/Sell/Trade) (In development)
-## Completed Features
+## Completed Features:
 ### -Fragrance Display
 ### -Fragrance Card
 ### -Partial Profile System
